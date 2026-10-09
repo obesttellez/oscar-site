@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Óscar Best Téllez</title>
+<meta name="description" content="Óscar Best Téllez — Computer Science student at the University of Bristol, from Spain. Find him on Instagram, LinkedIn, GitHub, TikTok and Snapchat.">
+<meta name="theme-color" content="#c8102e">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://obesttellez.github.io">
+<meta property="og:title" content="Óscar Best Téllez">
+<meta property="og:description" content="Computer Science student at the University of Bristol. From Spain 🇪🇸">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23c8102e' d='M0 0h64v64H0z'/%3E%3Cpath fill='%23fff' d='M10 10h44v44H10z'/%3E%3Cpath fill='%23f5b301' d='M15 15h34v34H15z'/%3E%3Ccircle cx='38' cy='36' r='15' fill='none' stroke='%231d2a6b' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Kalam:wght@400;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#c8102e;
+  --red-deep:#8e0a20;
+  --red-line:#b30d28;
+  --card:#fdfdfb;
+  --ink:#1d2a6b;          /* postmark blue-black */
+  --pen:#22307f;          /* ballpoint */
+  --text:#191b2b;
+  --muted:#4d5068;
+  --rule:#cfd3e2;
+  --gold:#f5b301;
+  --display:"Shrikhand", "Georgia", serif;
+  --hand:"Kalam", "Segoe Print", "Bradley Hand", cursive;
+  --print:"Barlow Condensed", "Arial Narrow", sans-serif;
+  color-scheme: light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  margin:0;min-height:100vh;min-height:100dvh;
+  background:var(--red);color:var(--text);
+  font-family:var(--print);
+  display:grid;place-items:center;
+  padding:max(16px, env(safe-area-inset-top)) 16px max(20px, env(safe-area-inset-bottom));
+  overflow-x:hidden;
+  position:relative;
+}
+::selection{background:var(--ink);color:#fff}
+html{scrollbar-color:var(--red-deep) var(--red)}
+
+/* ---------- drifting ground: faint cancellation waves + airmail chevrons ---------- */
+.ground{
+  position:fixed;inset:-320px;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='200' viewBox='0 0 320 200'%3E%3Cg fill='none' stroke='%23a50c24' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M0 22q20-12 40 0t40 0 40 0 40 0 40 0 40 0 40 0 40 0'/%3E%3Cpath d='M0 38q20-12 40 0t40 0 40 0 40 0 40 0 40 0 40 0 40 0'/%3E%3Cpath d='M0 54q20-12 40 0t40 0 40 0 40 0 40 0 40 0 40 0 40 0'/%3E%3Cpath d='M0 70q20-12 40 0t40 0 40 0 40 0 40 0 40 0 40 0 40 0'/%3E%3Cpath d='M30 128l14 14-14 14M58 128l14 14-14 14M86 128l14 14-14 14' stroke-width='5' stroke-linejoin='round'/%3E%3Cpath d='M190 120l14 14-14 14M218 120l14 14-14 14' stroke-width='5' stroke-linejoin='round' opacity='.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:320px 200px;
+  opacity:.55;
+  animation:drift 140s linear infinite;
+  will-change:transform;
+}
+@keyframes drift{to{transform:translate3d(-320px,-200px,0)}}
+
+/* ---------- the postcard ---------- */
+.card{
+  position:relative;z-index:1;
+  width:100%;max-width:1060px;
+  background:var(--card);
+  border-radius:6px;
+  display:grid;
+  grid-template-columns:minmax(0,1.12fr) 1px minmax(0,.88fr);
+  column-gap:clamp(28px,4vw,52px);
+  padding:clamp(36px,4.4vw,56px);
+  animation:settle 900ms cubic-bezier(.16,1,.3,1) both;
+}
+/* flat slab beneath the card — depth by layered colour, no blur */
+.card::before{
+  content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;
+  background:var(--red-deep);transform:translate(10px,12px);
+}
+.card::after{ /* the card face sits above the slab */
+  content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--card);
+}
+@keyframes settle{
+  from{transform:translateY(18px) rotate(-1.2deg)}
+  to{transform:none}
+}
+
+.divider{
+  grid-column:2;grid-row:1 / span 2;
+  background:var(--rule);
+  position:relative;
+}
+.divider span{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-90deg);
+  white-space:nowrap;background:var(--card);padding:0 14px;
+  font:600 12px/1 var(--print);letter-spacing:.32em;text-transform:uppercase;color:var(--muted);
+}
+
+/* ---------- message side ---------- */
+.message{grid-column:1;grid-row:1 / span 2;display:flex;flex-direction:column;min-width:0}
+.name{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(2.6rem,5.2vw,4.4rem);
+  line-height:.98;letter-spacing:-.01em;
+  color:var(--red);margin:0 0 .32em;
+  text-wrap:balance;
+}
+.name span{display:block}
+.bio{
+  font-family:var(--hand);font-size:clamp(1.18rem,1.6vw,1.38rem);line-height:1.45;
+  color:var(--pen);margin:0 0 clamp(22px,2.6vw,30px);max-width:30ch;
+}
+.bio .flag{font-family:system-ui,"Apple Color Emoji","Segoe UI Emoji",sans-serif;font-size:.95em}
+
+/* ---------- the sheet of link stamps ---------- */
+.sheet{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.stamp-link{
+  --r:4px;
+  position:relative;display:block;text-decoration:none;color:inherit;
+  border-radius:3px;outline:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.stamp-link .under,
+.stamp-link .face{
+  -webkit-mask:
+    radial-gradient(var(--r),#0000 97%,#000) round calc(-1.5*var(--r)) calc(-1.5*var(--r)) / calc(3*var(--r)) calc(3*var(--r)),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3*var(--r)) calc(100% - 3*var(--r));
+          mask:
+    radial-gradient(var(--r),#0000 97%,#000) round calc(-1.5*var(--r)) calc(-1.5*var(--r)) / calc(3*var(--r)) calc(3*var(--r)),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3*var(--r)) calc(100% - 3*var(--r));
+}
+.stamp-link .under{
+  position:absolute;inset:0;background:var(--shade);
+  transform:translate(4px,4px);
+}
+.stamp-link .face{
+  position:relative;
+  display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;
+  padding:13px 18px 13px 16px;
+  background:var(--c);color:var(--on);
+  transition:transform 260ms cubic-bezier(.16,1,.3,1);
+}
+.stamp-link .face::before{ /* printed frame line */
+  content:"";position:absolute;inset:7px;border:1px solid var(--frame);border-radius:1px;pointer-events:none;
+}
+.icon{width:30px;height:30px;flex:none;display:block}
+.label{display:flex;flex-wrap:wrap;align-items:baseline;min-width:0;row-gap:2px}
+.platform,.handle{white-space:nowrap}
+.sep{white-space:pre;letter-spacing:0}
+.platform{
+  font:700 1.32rem/1 var(--print);letter-spacing:.04em;text-transform:uppercase;
+}
+.handle{
+  font:500 1.02rem/1.2 var(--print);letter-spacing:.02em;
+  overflow-wrap:anywhere;opacity:.92;
+}
+
+.stamp-link:hover .face{transform:translate(-3px,-4px)}
+.stamp-link:active .face{transform:translate(4px,4px);transition-duration:80ms}
+.stamp-link:focus-visible{outline:3px solid var(--ink);outline-offset:5px}
+
+.s-ig{--c:#c2185b;--shade:#6d0d33;--on:#fff;--frame:rgba(255,255,255,.45)}
+.s-li{--c:#0a66c2;--shade:#063c73;--on:#fff;--frame:rgba(255,255,255,.45)}
+.s-gh{--c:#6639ba;--shade:#3a1f6d;--on:#fff;--frame:rgba(255,255,255,.45)}
+.s-tt{--c:#161823;--shade:#5b5d6b;--on:#fff;--frame:rgba(255,255,255,.35)}
+.s-sc{--c:#fffc00;--shade:#a39f00;--on:#121212;--frame:rgba(0,0,0,.35)}
+
+/* ---------- stamp side ---------- */
+.stamp-side{grid-column:3;grid-row:1;position:relative;display:flex;justify-content:flex-end;min-width:0}
+.stamp-wrap{position:relative}
+.photo-stamp{
+  --r:6px;
+  position:relative;width:clamp(190px,18vw,220px);
+  padding:calc(2*var(--r) + 4px) calc(2*var(--r) + 4px) 0;
+  background:var(--gold);
+  transform:rotate(1.6deg);
+  -webkit-mask:
+    radial-gradient(var(--r),#0000 97%,#000) round calc(-1.5*var(--r)) calc(-1.5*var(--r)) / calc(3*var(--r)) calc(3*var(--r)),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3*var(--r)) calc(100% - 3*var(--r));
+          mask:
+    radial-gradient(var(--r),#0000 97%,#000) round calc(-1.5*var(--r)) calc(-1.5*var(--r)) / calc(3*var(--r)) calc(3*var(--r)),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3*var(--r)) calc(100% - 3*var(--r));
+}
+.photo{
+  position:relative;aspect-ratio:4/5;overflow:hidden;background:#e9a800;
+  outline:2px solid #fff;outline-offset:-6px;
+}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.monogram{
+  position:absolute;inset:0;display:none;place-items:center;
+  font-family:var(--display);font-size:clamp(2.3rem,9.5vw,4.4rem);line-height:1;color:var(--red);
+  background:
+#ffe08a;
+}
+.photo.no-img img{display:none}
+.photo.no-img .monogram{display:grid}
+.print-line{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:7px 2px calc(2*var(--r) + 3px);
+  font:700 .82rem/1 var(--print);letter-spacing:.14em;text-transform:uppercase;color:#3b2a00;
+}
+.print-line b{font-size:1.15rem;letter-spacing:.02em}
+
+/* the postmark, inked over the stamp corner */
+.postmark{
+  position:absolute;z-index:2;pointer-events:none;
+  width:128%;
+  left:-22%;bottom:-11%;
+  color:var(--ink);
+  mix-blend-mode:multiply;opacity:.88;
+  transform:rotate(-11deg);
+  animation:thunk 560ms cubic-bezier(.16,1,.3,1) 650ms both;
+}
+.postmark svg{display:block;width:100%;height:auto;overflow:visible}
+@keyframes thunk{
+  0%{opacity:0;transform:rotate(-11deg) scale(1.35)}
+  60%{opacity:.92;transform:rotate(-11deg) scale(.97)}
+  100%{opacity:.88;transform:rotate(-11deg) scale(1)}
+}
+
+/* address area */
+.address{grid-column:3;grid-row:2;align-self:end;padding-top:clamp(64px,7vw,96px);min-width:0}
+.airmail{
+  display:inline-flex;flex-direction:column;gap:3px;
+  padding:7px 12px 6px;margin-bottom:22px;
+  background:var(--ink);color:#fff;border-radius:2px;
+  font:700 .82rem/1 var(--print);letter-spacing:.2em;text-transform:uppercase;
+  transform:rotate(-2deg);
+}
+.airmail span:last-child{font-weight:500;letter-spacing:.26em;opacity:.85;font-size:.72rem}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- phone: portrait card ---------- */
+@media (max-width: 820px){
+  body{place-items:start center;padding-top:max(16px, env(safe-area-inset-top))}
+  .card{
+    grid-template-columns:minmax(0,1fr) auto;
+    column-gap:12px;
+    padding:22px 18px 24px;
+    max-width:560px;
+  }
+  .card::before{transform:translate(6px,7px)}
+  .divider{display:none}
+  .message{display:contents}
+  .name{grid-column:1;grid-row:1;align-self:start;font-size:clamp(2.15rem,10.6vw,3rem);margin:4px 0 0;line-height:1}
+  .stamp-side{grid-column:2;grid-row:1;align-self:start}
+  .photo-stamp{--r:5px;width:clamp(116px,34vw,170px);padding:calc(2*var(--r) + 3px) calc(2*var(--r) + 3px) 0}
+  .print-line{font-size:.7rem;padding:5px 1px calc(2*var(--r) + 2px)}
+  .print-line b{font-size:.95rem}
+  .bio{grid-column:1 / -1;grid-row:2;margin:20px 0 20px;max-width:24ch;font-size:1.2rem;position:relative;z-index:3}
+  .sheet{grid-column:1 / -1;grid-row:3;gap:10px}
+  .address{grid-column:1 / -1;grid-row:4;padding-top:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .airmail{margin:0}
+  .stamp-link .face{padding:12px 16px 12px 14px;gap:12px}
+  .platform{font-size:1.2rem}
+  .handle{font-size:.98rem}
+}
+@media (max-width: 400px){
+  .platform{font-size:1.1rem}
+  .handle{font-size:.92rem}
+}
+@media (max-width: 360px){
+  .card{padding:18px 14px 20px}
+  .platform{font-size:1rem}
+  .handle{font-size:.86rem}
+  .stamp-link .face{gap:10px;padding:11px 13px 11px 12px}
+  .icon{width:26px;height:26px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ground,.card,.postmark{animation:none}
+  .stamp-link .face{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="ground" aria-hidden="true"></div>
+
+<main class="card" aria-labelledby="name">
+  <div class="message">
+    <h1 class="name" id="name"><span>Óscar</span> <span>Best Téllez</span></h1>
+    <p class="bio">Computer Science student at the University of Bristol. From Spain <span class="flag" role="img" aria-label="Spanish flag">🇪🇸</span></p>
+
+    <ul class="sheet" aria-label="Find Óscar on">
+      <li>
+        <a class="stamp-link s-ig" href="https://www.instagram.com/heyimosc4r" target="_blank" rel="noopener" aria-label="Instagram, @heyimosc4r (opens in a new tab)">
+          <span class="under" aria-hidden="true"></span>
+          <span class="face">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            <span class="label"><span class="platform">Instagram<span class="sep" aria-hidden="true"> – </span></span><span class="handle">@heyimosc4r</span></span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="stamp-link s-li" href="https://www.linkedin.com/in/oscar-best-tellez-034346248" target="_blank" rel="noopener" aria-label="LinkedIn, Óscar Best Téllez (opens in a new tab)">
+          <span class="under" aria-hidden="true"></span>
+          <span class="face">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="3" fill="currentColor"/><g fill="#0a66c2"><rect x="6.2" y="9.6" width="2.6" height="8.2"/><circle cx="7.5" cy="6.9" r="1.55"/><path d="M10.7 9.6h2.5v1.2c.4-.8 1.4-1.4 2.7-1.4 2.2 0 2.9 1.4 2.9 3.6v4.8h-2.6v-4.3c0-1.1-.3-1.9-1.3-1.9-1.1 0-1.6.8-1.6 2v4.2h-2.6z"/></g></svg>
+            <span class="label"><span class="platform">LinkedIn<span class="sep" aria-hidden="true"> – </span></span><span class="handle">Óscar Best Téllez</span></span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="stamp-link s-gh" href="https://github.com/obesttellez" target="_blank" rel="noopener" aria-label="GitHub, @obesttellez (opens in a new tab)">
+          <span class="under" aria-hidden="true"></span>
+          <span class="face">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .9C5.8.9.9 5.9.9 12c0 4.9 3.2 9.1 7.6 10.6.6.1.8-.2.8-.5v-1.9c-3.1.7-3.7-1.3-3.7-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10.6 10.6 0 0 1 5.6 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.3.8 1 .8 2.1v3.1c0 .3.2.6.8.5 4.4-1.5 7.6-5.7 7.6-10.6C23.1 5.9 18.2.9 12 .9z"/></svg>
+            <span class="label"><span class="platform">GitHub<span class="sep" aria-hidden="true"> – </span></span><span class="handle">@obesttellez</span></span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="stamp-link s-tt" href="https://www.tiktok.com/@O_telly" target="_blank" rel="noopener" aria-label="TikTok, @O_telly (opens in a new tab)">
+          <span class="under" aria-hidden="true"></span>
+          <span class="face">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(-.8 -.6)"><path fill="#25f4ee" d="M16.6 2h-3.3v13.2a2.9 2.9 0 1 1-2.9-2.9l.9.1V9a6.3 6.3 0 1 0 5.3 6.2V8.6a7.6 7.6 0 0 0 4.4 1.4V6.7a4.4 4.4 0 0 1-4.4-4.7z"/></g><g transform="translate(.8 .6)"><path fill="#fe2c55" d="M16.6 2h-3.3v13.2a2.9 2.9 0 1 1-2.9-2.9l.9.1V9a6.3 6.3 0 1 0 5.3 6.2V8.6a7.6 7.6 0 0 0 4.4 1.4V6.7a4.4 4.4 0 0 1-4.4-4.7z"/></g><path fill="#fff" d="M16.6 2h-3.3v13.2a2.9 2.9 0 1 1-2.9-2.9l.9.1V9a6.3 6.3 0 1 0 5.3 6.2V8.6a7.6 7.6 0 0 0 4.4 1.4V6.7a4.4 4.4 0 0 1-4.4-4.7z"/></svg>
+            <span class="label"><span class="platform">TikTok<span class="sep" aria-hidden="true"> – </span></span><span class="handle">@O_telly</span></span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="stamp-link s-sc" href="https://www.snapchat.com/add/oscar-telly" target="_blank" rel="noopener" aria-label="Snapchat, oscar-telly (opens in a new tab)">
+          <span class="under" aria-hidden="true"></span>
+          <span class="face">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" stroke="#121212" stroke-width="1.5" stroke-linejoin="round" d="M12 2.6c-3 0-5.2 2.3-5.2 5.3v2.3l-1.3-.4c-.5-.1-.9.4-.6.8.4.5 1.2.8 1.9 1-.6 1.6-1.8 2.9-3.4 3.5-.4.2-.4.7 0 .9.7.3 1.5.4 2.1.6.2.5.2 1.1.6 1.3.6.2 1.4-.2 2.4 0 1 .3 1.9 1.7 3.5 1.7s2.5-1.4 3.5-1.7c1-.2 1.8.2 2.4 0 .4-.2.4-.8.6-1.3.6-.2 1.4-.3 2.1-.6.4-.2.4-.7 0-.9-1.6-.6-2.8-1.9-3.4-3.5.7-.2 1.5-.5 1.9-1 .3-.4-.1-.9-.6-.8l-1.3.4V7.9c0-3-2.2-5.3-5.2-5.3z"/></svg>
+            <span class="label"><span class="platform">Snapchat<span class="sep" aria-hidden="true"> – </span></span><span class="handle">oscar-telly</span></span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="divider" aria-hidden="true"><span>Tarjeta postal · Postcard</span></div>
+
+  <div class="stamp-side">
+    <div class="stamp-wrap">
+    <figure class="photo-stamp" style="margin:0">
+      <div class="photo" id="photo">
+        <img src="avatar.jpg" alt="Photo of Óscar Best Téllez" width="400" height="500" decoding="async" id="avatar">
+        <span class="monogram" aria-hidden="true">ÓB</span>
+      </div>
+      <figcaption class="print-line" aria-hidden="true"><span>Postage · UK</span><b>1st</b></figcaption>
+    </figure>
+
+    <div class="postmark" aria-hidden="true">
+      <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="ink" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2.6" xChannelSelector="R" yChannelSelector="G" result="d"/>
+            <feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="2" seed="3" result="blot"/>
+            <feColorMatrix in="blot" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.6 2.15" result="mask"/>
+            <feComposite in="d" in2="mask" operator="in"/>
+          </filter>
+          <path id="arcTop" d="M28 75a47 47 0 0 1 94 0"/>
+          <path id="arcBot" d="M22 75a53 53 0 0 0 106 0"/>
+        </defs>
+        <g filter="url(#ink)" fill="currentColor" stroke="currentColor">
+          <circle cx="75" cy="75" r="62" fill="none" stroke-width="3.4"/>
+          <circle cx="75" cy="75" r="40" fill="none" stroke-width="1.8"/>
+          <text font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="15" letter-spacing="3.2" stroke="none">
+            <textPath href="#arcTop" startOffset="50%" text-anchor="middle">BRISTOL · UK</textPath>
+          </text>
+          <text font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="12" letter-spacing="3" stroke="none" dominant-baseline="hanging">
+            <textPath href="#arcBot" startOffset="50%" text-anchor="middle">★ ROYAL MAIL ★</textPath>
+          </text>
+          <text id="pm-date" x="75" y="73" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="15.5" letter-spacing="1" stroke="none">09 OCT 26</text>
+          <text id="pm-time" x="75" y="92" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="600" font-size="14" letter-spacing="1.5" stroke="none">BRISTOL</text>
+          <g fill="none" stroke-width="3.4" stroke-linecap="round">
+            <path d="M142 48q13-8 26 0t26 0 26 0 26 0 26 0 26 0"/>
+            <path d="M144 66q13-8 26 0t26 0 26 0 26 0 26 0 26 0"/>
+            <path d="M144 84q13-8 26 0t26 0 26 0 26 0 26 0 26 0"/>
+            <path d="M142 102q13-8 26 0t26 0 26 0 26 0 26 0 26 0"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    </div>
+  </div>
+
+  <div class="address">
+    <div class="airmail" aria-hidden="true"><span>Por avión</span><span>Par avion</span></div>
+  </div>
+</main>
+
+<script>
+(function(){
+  var img=document.getElementById('avatar'), box=document.getElementById('photo'), tried=false;
+  function fail(){
+    if(!tried){tried=true;img.src='avater.jpg';return;}
+    img.removeAttribute('alt');box.classList.add('no-img');
+    box.setAttribute('role','img');box.setAttribute('aria-label','Óscar Best Téllez monogram');
+  }
+  img.addEventListener('error',fail);
+  if(img.complete && img.naturalWidth===0) fail();
+
+  try{
+    var now=new Date(), tz='Europe/London';
+    var p={};
+    new Intl.DateTimeFormat('en-GB',{timeZone:tz,day:'2-digit',month:'short',year:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false})
+      .formatToParts(now).forEach(function(x){p[x.type]=x.value;});
+    if(p.day&&p.month&&p.year){
+      document.getElementById('pm-date').textContent=(p.day+' '+p.month.slice(0,3)+' '+p.year).toUpperCase();
+      document.getElementById('pm-time').textContent=(p.hour==='24'?'00':p.hour)+':'+p.minute;
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
